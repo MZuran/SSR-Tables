@@ -12,7 +12,7 @@ function CsvTable({ header, contentArray, tableName, filePath, altHeader }) {
     <div className='component-container'>
       <div className="mb-2">
         <h5>{tableName}</h5>
-        <small className="text-muted"><em>{filePath}</em></small>
+        <small className="text-muted wrap-container"><em>{filePath}</em></small>
         <Form.Check
           type="switch"
           label="Use original column names"

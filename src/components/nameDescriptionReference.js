@@ -18,7 +18,7 @@ function NameDecriptionReference({ classTable, className, classDesc, filePath, a
         <div className='component-container'>
             <div className="mb-4">
                 <h5>Name and Description references</h5>
-                <small className="text-muted"><em>{filePath}</em></small>
+                <small className="text-muted wrap-container"><em>{filePath}</em></small>
             </div>
             <p>Placeholder text taken from a generic lord.</p>
             <CopyBlock

@@ -1,11 +1,17 @@
 .component-container {
-    margin-bottom: 2.5vw;
-    background-color: white;
-    padding: 1rem;
-    border: 2px solid $color-2;
-    border-radius: 15px;
+  margin-bottom: 2.5vw;
+  background-color: white;
+  padding: 1rem;
+  border: 2px solid $color-2;
+  border-radius: 15px;
+}
+
+.wrap-container {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .scrollable-container {
-    overflow-x: auto;
+  overflow-x: auto;
 }

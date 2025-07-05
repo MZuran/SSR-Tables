@@ -11,7 +11,7 @@ function MapSprites({ sms, filePath }) {
     return (
         <div className='component-container'>
             <h5>Map Sprite References</h5>
-            <small className="text-muted"><em>{filePath}</em></small>
+            <small className="text-muted wrap-container"><em>{filePath}</em></small>
             <MapSpriteForm onUpdate={setData}/>
 
             { data && 
