@@ -9,8 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bootstrap": "^5.3.6",
+    "dedent": "^1.6.0",
+    "next": "15.3.3",
     "react": "^19.0.0",
+    "react-bootstrap": "^2.10.10",
+    "react-code-blocks": "^0.1.6",
     "react-dom": "^19.0.0",
-    "next": "15.3.3"
+    "sass": "^1.89.1"
   }
 }

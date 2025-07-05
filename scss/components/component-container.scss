@@ -1,0 +1,11 @@
+.component-container {
+    margin-bottom: 2.5vw;
+    background-color: white;
+    padding: 1rem;
+    border: 2px solid $color-2;
+    border-radius: 15px;
+}
+
+.scrollable-container {
+    overflow-x: auto;
+}
