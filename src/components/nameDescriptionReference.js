@@ -1,16 +1,25 @@
-import React from 'react'
-import { CopyBlock, dracula } from 'react-code-blocks'
+import React, { useContext } from 'react'
 import dedent from 'dedent'
+import { ClassContext } from '@/utils/classContext'
+import CodeBlock from './codeBlock'
 
-function NameDecriptionReference({ classTable, className, classDesc, filePath, animatorName = "(Insert animator)" }) {
+function NameDecriptionReference({ filePath, animatorName = "(Insert animator)" }) {
 
-    let text = `
+    const data = useContext(ClassContext)
+
+    const classTable = data.classObject.ClassTable
+    const className = data.classObject.Name
+    const classDesc = data.classObject.Description
+
+    let text =
+        `
         ## ${className}
         ${classTable}[X]
         ## ${classDesc}
         A noble attached to a ruling[N]
-        house. Has great potential.[N]
-        Anim by ${animatorName}[X]`
+        house.Has great potential.[N]
+        Anim by ${animatorName} [X]
+        `
 
     text = dedent(text)
 
@@ -21,14 +30,7 @@ function NameDecriptionReference({ classTable, className, classDesc, filePath, a
                 <small className="text-muted wrap-container"><em>{filePath}</em></small>
             </div>
             <p>Placeholder text taken from a generic lord.</p>
-            <CopyBlock
-                text={text}
-                language={"text"}
-                showLineNumbers={false}
-                wrapLines
-                theme={dracula}
-                customStyle={{color: "green"}}
-            />
+            <CodeBlock>{text}</CodeBlock>
 
         </div>
     )

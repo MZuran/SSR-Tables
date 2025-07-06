@@ -1,5 +1,11 @@
 .csv-table {
   margin-bottom: 1rem;
+  table-layout: auto;
+}
+
+th,
+td {
+  white-space: nowrap;
 }
 
 /*# sourceMappingURL=csv-table.css.map */

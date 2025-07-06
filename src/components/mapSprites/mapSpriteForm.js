@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+import { useContext } from 'react';
+import { ClassContext } from '@/utils/classContext';
+
 function MapSpriteForm({ onUpdate }) {
+
     const [values, setValues] = useState({
         smsFileName: '',
         smsNumber: '',
         mmsFileName: '',
-        mmsNumber: ''
+        mmsNumber: '',
+        size: 0
     });
 
     const handleChange = (e) => {
@@ -14,13 +19,17 @@ function MapSpriteForm({ onUpdate }) {
         setValues(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = () => {
-        const { smsFileName, smsNumber, mmsFileName, mmsNumber } = values;
+    const classId = useContext(ClassContext).classObject.ID
 
-        if (!smsFileName || !smsNumber || !mmsFileName || !mmsNumber) {
+    const handleSubmit = () => {
+        const { smsFileName, smsNumber, mmsFileName } = values;
+
+        if (!smsFileName || !smsNumber || !mmsFileName ) {
             alert("All fields must be filled out.");
             return;
         }
+
+        values.mmsNumber = classId
 
         console.log(values)
         onUpdate(values);
@@ -29,6 +38,7 @@ function MapSpriteForm({ onUpdate }) {
 
     return (
         <Form autoComplete="off" className="mt-3 mb-3">
+            {/* Sms Inputs */}
             <div className="d-flex align-items-end mb-2 gap-2">
                 <Form.Group className="flex-grow-1">
                     <Form.Label>SMS File Name</Form.Label>
@@ -53,8 +63,8 @@ function MapSpriteForm({ onUpdate }) {
                     />
                 </Form.Group>
             </div>
-
-            <div className="d-flex align-items-end mb-2 gap-2">
+            {/* Mms Inputs */}
+            <div className="d-flex flex-row mb-2 gap-2">
                 <Form.Group className="flex-grow-1">
                     <Form.Label>MMS File Name</Form.Label>
                     <Form.Control
@@ -66,19 +76,40 @@ function MapSpriteForm({ onUpdate }) {
                         autoComplete="off"
                     />
                 </Form.Group>
-                <Form.Group style={{ width: '100px' }}>
-                    <Form.Label>MMS Number</Form.Label>
-                    <Form.Control
-                        size="sm"
-                        type="number"
-                        name="mmsNumber"
-                        value={values.mmsNumber}
-                        onChange={handleChange}
-                        autoComplete="off"
-                    />
+            </div>
+            {/* Size Inputs */}
+            <div>
+                <Form.Group className="mb-3">
+                    <Form.Label>Sprite Size</Form.Label>
+                    <div className='radio-container' style={{paddingLeft: "2px"}}>
+                        <Form.Check
+                            inline
+                            type="radio"
+                            name="size"
+                            label="16x16"
+                            value={0}
+                            onChange={handleChange}
+                            defaultChecked={true}
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            name="size"
+                            label="16x32"
+                            value={1}
+                            onChange={handleChange}
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            name="size"
+                            label="32x32"
+                            value={2}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </Form.Group>
             </div>
-
             <Button variant="primary" size="sm" onClick={handleSubmit} className='clipboard-button'>
                 Update
             </Button>
