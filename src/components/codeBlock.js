@@ -1,13 +1,15 @@
 import React from 'react'
 import CopyToClipboardButton from './copyToClipboardButton'
 
-function CodeBlock({children}) {
+function CodeBlock({ children, copyButton = true }) {
   return (
     <>
-    <div className='code-block'>
-      {children}
-    </div>
-    <CopyToClipboardButton textToCopy={children}/>
+      <div className='scrollable-container'>
+        <div className='code-block'>
+          <pre>{children}</pre>
+        </div>
+      </div>
+      {copyButton && <CopyToClipboardButton textToCopy={children} />}
     </>
   )
 }

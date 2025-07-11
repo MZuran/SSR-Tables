@@ -1,5 +1,5 @@
 export default function standardizeReferences(data) {
-  const classTable = data.ClassTable;
+  const classTable = data["Class Pointer"];
 
   if (!classTable) return data;
 

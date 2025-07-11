@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import dedent from 'dedent'
-import { ClassContext } from '@/utils/classContext'
+import { ClassContext } from '@/context/classContext'
 import CodeBlock from './codeBlock'
 
 function NameDecriptionReference({ filePath, animatorName = "(Insert animator)" }) {
 
-    const data = useContext(ClassContext)
+    const data = useContext(ClassContext).classContextData
 
-    const classTable = data.classObject.ClassTable
+    const classTable = data.classObject["Class Pointer"]
     const className = data.classObject.Name
     const classDesc = data.classObject.Description
 
@@ -18,8 +18,7 @@ function NameDecriptionReference({ filePath, animatorName = "(Insert animator)" 
         ## ${classDesc}
         A noble attached to a ruling[N]
         house.Has great potential.[N]
-        Anim by ${animatorName} [X]
-        `
+        Anim by ${animatorName} [X]`
 
     text = dedent(text)
 

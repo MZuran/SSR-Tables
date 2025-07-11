@@ -16,7 +16,7 @@ function CopyToClipboardButton({ textToCopy }) {
   };
 
   return (
-    <Button className='clipboard-button' onClick={handleCopy}>
+    <Button className='button-style' onClick={handleCopy}>
       Copy to clipboard
     </Button>
   );

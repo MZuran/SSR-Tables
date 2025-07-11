@@ -1,18 +1,19 @@
 import React from 'react'
 import MapSpriteForm from './mapSpriteForm'
+import FolderStructure from './folderStructure'
 
 import { Accordion } from 'react-bootstrap'
 
 import { useState, useContext } from 'react'
-import { ClassContext } from '@/utils/classContext'
+import { ClassContext } from '@/context/classContext'
 
 import CodeBlock from '../codeBlock'
 
 function MapSprites({ filePath }) {
 
     const [data, setData] = useState(null)
-    const classTable = useContext(ClassContext).classObject["ClassTable"]
-    const smsPointer = useContext(ClassContext).classObject["Standing Map Anims"]
+    const classTable = useContext(ClassContext).classContextData.classObject["Class Pointer"]
+    const smsPointer = useContext(ClassContext).classContextData.classObject["Standing Map Anims"]
 
     return (
         <div className='component-container'>
@@ -22,8 +23,11 @@ function MapSprites({ filePath }) {
 
             {data &&
                 <>
-                    <hr/>
-                    <Accordion defaultActiveKey="0">
+                    <hr />
+                    <FolderStructure SMSName={data.smsFileName} MMSName={data.mmsFileName} />
+                    <hr />
+                    <h5>List additions</h5>
+                    <Accordion /* defaultActiveKey="0" */>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>SMS Id definition</Accordion.Header>
                             <Accordion.Body>

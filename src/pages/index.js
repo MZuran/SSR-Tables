@@ -1,47 +1,38 @@
 'use client'
 
-import React from 'react'
-
-import { FE6SRRHeader, unparsedFE6SRRHeader, FE7SRRHeader, unparsedFE7SRRHeader, FE8SRRHeader, unparsedFE8SRRHeader } from '@/utils/headers'
+import React, { useEffect } from 'react'
 
 import CsvInput from '@/components/csvInput'
-import CsvTable from '@/components/csvTable'
+import ClassTableCsv from '@/components/tables/classTable'
 import NameDecriptionReference from '@/components/nameDescriptionReference'
 import MapSprites from '@/components/mapSprites/mapSprites'
+import PromotionContainer from '@/components/promotion/promotionContainer'
+import FE8PromoTable from '@/components/tables/fe8PromoTable'
 
-import { ClassContext } from '@/utils/classContext'
-
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { ClassContext } from '@/context/classContext'
+import { useClassContext } from '@/hooks/useClassContext'
 
 function Home() {
-
-  const [data, setData] = useState(null)
-
-  useEffect(
-    () => {
-      console.log('Data loaded:', data)
-    },
-    [data]
-  )
+  const { classContextData, updateClassContext, classContextUpdateNumber } = useClassContext();
 
   return (
-    <div className='page-container'>
-      <ClassContext.Provider value={data}>
-        <CsvInput onLoadData={setData} />
+    <ClassContext.Provider value={{ classContextData, updateClassContext, classContextUpdateNumber }}>
+      <div className='page-container'>
+        <CsvInput onLoadData={updateClassContext} />
         {
-          data &&
+          classContextData &&
           <>
-            <CsvTable game={"FE6"} filePath={"veslyquix/SRR_FEGBA/Patches/FE6/Tables/ClassFE6Form_0060A0E8.csv"} />
-            <CsvTable game={"FE7"} filePath={"veslyquix/SRR_FEGBA/Patches/FE7/Tables/ClassForm_00BE015C.csv"} />
-            <CsvTable game={"FE8"} filePath={"Vesly01/SkillSystem/Tables/NightmareModules/CharactersClasses/ClassTable.csv"} />
+            <PromotionContainer filePath={"veslyquix/SRR_FEGBA/Patches/FE7/PromotionItemUseLists/Installer.event"} />
+            <ClassTableCsv game={"FE6"} filePath={"veslyquix/SRR_FEGBA/Patches/FE6/Tables/ClassFE6Form_0060A0E8.csv"} />
+            <ClassTableCsv game={"FE7"} filePath={"veslyquix/SRR_FEGBA/Patches/FE7/Tables/ClassForm_00BE015C.csv"} />
+            <ClassTableCsv game={"FE8"} filePath={"Vesly01/SkillSystem/Tables/NightmareModules/CharactersClasses/ClassTable.csv"} />
+            <FE8PromoTable filePath={"Vesly01/SkillSystem/blob/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/PromotionBranchEditor.csv"}/>
             <NameDecriptionReference filePath={"veslyquix/SRR_FEGBA/Text/Names.txt"} />
             <MapSprites filePath={"veslyquix/SRR_FEGBA/gfx/MapSprites/Installer.event"} />
           </>
         }
-
-      </ClassContext.Provider>
-    </div>
+      </div>
+    </ClassContext.Provider>
   )
 }
 

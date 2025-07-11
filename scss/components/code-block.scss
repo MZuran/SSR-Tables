@@ -1,8 +1,17 @@
 .code-block {
-    white-space: pre-line;
-    color: white;
-    background-color: $color-black;
-    padding: 1rem;
-    border-radius: $border-radius;
-    margin-top: 0.5rem;
+  background-color: $color-black;
+  color: white;
+  padding: 1rem;
+  border-radius: $border-radius;
+  margin-top: 0.5rem;
+
+  display: flex;
+  flex-grow: 1;
+
+  margin-bottom: 0.5rem;
+
+  pre {
+    margin: 0;
+    overflow: visible;
+  }
 }

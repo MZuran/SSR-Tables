@@ -1,5 +1,5 @@
 export default function standardizeClassTable(data) {
-  const original = data["ClassTable"];
+  const original = data["Class Pointer"];
 
   if (!original) return data;
 
@@ -22,6 +22,6 @@ export default function standardizeClassTable(data) {
 
   return {
     ...data,
-    ClassTable: className
+    "Class Pointer": className
   };
 }

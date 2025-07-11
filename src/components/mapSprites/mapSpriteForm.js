@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 import { useContext } from 'react';
-import { ClassContext } from '@/utils/classContext';
+import { ClassContext } from '@/context/classContext';
 
 function MapSpriteForm({ onUpdate }) {
 
@@ -19,7 +19,7 @@ function MapSpriteForm({ onUpdate }) {
         setValues(prev => ({ ...prev, [name]: value }));
     };
 
-    const classId = useContext(ClassContext).classObject.ID
+    const classId = useContext(ClassContext).classContextData.classObject.ID
 
     const handleSubmit = () => {
         const { smsFileName, smsNumber, mmsFileName } = values;
@@ -110,7 +110,7 @@ function MapSpriteForm({ onUpdate }) {
                     </div>
                 </Form.Group>
             </div>
-            <Button variant="primary" size="sm" onClick={handleSubmit} className='clipboard-button'>
+            <Button variant="primary" onClick={handleSubmit} className='button-style'>
                 Update
             </Button>
         </Form>
