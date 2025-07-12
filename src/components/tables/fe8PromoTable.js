@@ -31,8 +31,6 @@ function FE8PromoTable({ filePath }) {
       (data, index) => <td key={index}>{data}</td>
     );
 
-    console.log(tableColumns)
-
     setMappedContentArray(tableColumns);
   }, [classContextUpdateNumber, classContextData]);
 

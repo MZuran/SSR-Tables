@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 // Section in list for unpromoted classes
@@ -9,13 +9,16 @@ const promotionItems = [
     "ElysianWhip",
     "GuidingRing",
     "HeavenSeal",
-    "MasterSeal",
     "OceanSeal",
     "LunarBrace",
     "SolarBrace"
 ];
 
-const optionsObject = {};
+const optionsObject = {
+    MasterSeal: true
+};
+promotionItems.forEach(item => optionsObject[item] = false);
+
 
 promotionItems.forEach(item => optionsObject[item] = false);
 
@@ -50,6 +53,25 @@ function PromotionItemForm({ setter }) {
             style={{ marginRight: "1rem", width: "10rem" }}
         />
     ));
+
+    checkboxes.push(
+        <Form.Check
+            type="checkbox"
+            key={"MasterSeal"}
+            id={`checkbox-MasterSeal`}
+            label={"MasterSeal"}
+            name={"MasterSeal"}
+            checked={true}
+            disabled
+            onChange={handleCheckboxChange}
+            style={{ marginRight: "1rem", width: "10rem" }}
+        />
+    )
+
+    useEffect(
+        () => {setter(selectedOptions);},
+        []
+    )
 
     return (
         <Form className='checkbox-container d-flex flex-wrap'>

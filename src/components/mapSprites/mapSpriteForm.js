@@ -31,13 +31,12 @@ function MapSpriteForm({ onUpdate }) {
 
         values.mmsNumber = classId
 
-        console.log(values)
         onUpdate(values);
     };
 
 
     return (
-        <Form autoComplete="off" className="mt-3 mb-3">
+        <Form autoComplete="off" className="">
             {/* Sms Inputs */}
             <div className="d-flex align-items-end mb-2 gap-2">
                 <Form.Group className="flex-grow-1">

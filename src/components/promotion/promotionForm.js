@@ -6,7 +6,7 @@ import { ClassContext } from '@/context/classContext'
 
 import { exportObjectForFE6, exportObjectForFE7, exportObjectForFE8 } from '@/utils/table functions/exportClassTables'
 
-function PromotionForm({ promotionItemsSetter }) {
+function PromotionForm({ setUsablePromotionItemsParent }) {
     const [canPromote, setCanPromote] = useState(false)
     const [relatedClass, setRelatedClass] = useState("")
     const [altPromotion, setAltPromotion] = useState("")
@@ -23,7 +23,12 @@ function PromotionForm({ promotionItemsSetter }) {
         classContextData.tableData.FE8 = exportObjectForFE8(classContextData.classObject)
 
         updateClassContext(classContextData)
-        console.log(classContextData.tableData["Alt Class"])
+
+        if (canPromote) {
+            setUsablePromotionItemsParent(usablePromotionItems)
+        }   else    {
+            setUsablePromotionItemsParent(null)
+        }
     }
 
     return (
@@ -66,7 +71,7 @@ function PromotionForm({ promotionItemsSetter }) {
                         placeholder="0x00"
                         className="me-2"
                     />
-                    <small className="text-muted"><em>(Class Pointer)</em></small>
+                    <small className="text-muted"><em>(Class ID/Pointer)</em></small>
                 </Form.Group>
 
                 {canPromote && (
@@ -89,12 +94,12 @@ function PromotionForm({ promotionItemsSetter }) {
                             placeholder="0x00"
                             className="me-2"
                         />
-                        <small className="text-muted"><em>(Class Pointer)</em></small>
+                        <small className="text-muted"><em>(Class ID/Pointer)</em></small>
                     </Form.Group>
                 )}
 
                 <hr />
-                <Button className="button-style mt-0 mb-0" onClick={updateClickHandler}>Update</Button>
+                <Button className="button-style m-0" onClick={updateClickHandler}>Update</Button>
             </Form>
         </>
     )
