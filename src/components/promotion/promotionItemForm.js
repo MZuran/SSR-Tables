@@ -50,7 +50,7 @@ function PromotionItemForm({ setter }) {
             name={label}
             checked={selectedOptions[label]}
             onChange={handleCheckboxChange}
-            style={{ marginRight: "1rem", width: "10rem" }}
+            style={{ marginRight: "1rem", width: "10rem", marginBottom: "0.5rem" }}
         />
     ));
 
@@ -64,19 +64,21 @@ function PromotionItemForm({ setter }) {
             checked={true}
             disabled
             onChange={handleCheckboxChange}
-            style={{ marginRight: "1rem", width: "10rem" }}
+            style={{ marginRight: "1rem", width: "10rem", marginBottom: "0.5rem" }}
         />
     )
 
     useEffect(
-        () => {setter(selectedOptions);},
+        () => { setter(selectedOptions); },
         []
     )
 
     return (
-        <Form className='checkbox-container d-flex flex-wrap'>
-            {checkboxes}
-        </Form>
+        <div className='d-flex justify-content-center'>
+            <Form className='checkbox-container d-flex flex-wrap'>
+                {checkboxes}
+            </Form>
+        </div>
     );
 }
 

@@ -6,7 +6,7 @@ import { ClassContext } from '@/context/classContext'
 
 import { exportObjectForFE6, exportObjectForFE7, exportObjectForFE8 } from '@/utils/table functions/exportClassTables'
 
-function PromotionForm({ setUsablePromotionItemsParent }) {
+function PromotionForm({ setUsablePromotionItemsParent, setCanPromoteParent }) {
     const [canPromote, setCanPromote] = useState(false)
     const [relatedClass, setRelatedClass] = useState("")
     const [altPromotion, setAltPromotion] = useState("")
@@ -37,7 +37,10 @@ function PromotionForm({ setUsablePromotionItemsParent }) {
                 type="switch"
                 label="Class is able to promote"
                 checked={canPromote}
-                onChange={() => setCanPromote(!canPromote)}
+                onChange={() => {
+                    setCanPromote(!canPromote)
+                    setCanPromoteParent(!canPromote)
+                }}
                 className="switch-headers mt-3"
             />
 
@@ -98,7 +101,7 @@ function PromotionForm({ setUsablePromotionItemsParent }) {
                     </Form.Group>
                 )}
 
-                <hr />
+                {/* <hr /> */}
                 <Button className="button-style m-0" onClick={updateClickHandler}>Update</Button>
             </Form>
         </>
