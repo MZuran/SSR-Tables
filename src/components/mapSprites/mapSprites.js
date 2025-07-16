@@ -14,11 +14,16 @@ function MapSprites({ filePath }) {
     const [data, setData] = useState(null)
     const classTable = useContext(ClassContext).classContextData.classObject["Class Pointer"]
     const smsPointer = useContext(ClassContext).classContextData.classObject["Standing Map Anims"]
+    const repoLink = "https://github.com/Klokinator/FE-Repo"
 
     return (
         <div className='component-container'>
             <h5>Map Sprite References</h5>
             <small className="text-muted wrap-container"><em>{filePath}</em></small>
+            <p className='mt-4'>
+                Map sprites for the {classTable} class can be downloaded from the <a target='_blank' href={repoLink}>Communal Fire Emblem Graphics Repository</a>
+            </p>
+            <hr/>
             <MapSpriteForm onUpdate={setData} />
 
             {data &&

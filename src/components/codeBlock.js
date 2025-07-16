@@ -5,9 +5,9 @@ function CodeBlock({ children, copyButton = true, copyContent = children, classN
   return (
     <>
       <div className={`scrollable-container ${className}`}>
-        <div className='code-block'>
+        <code className='code-block'>
           <pre>{children}</pre>
-        </div>
+        </code>
       </div>
       {copyButton && <CopyToClipboardButton textToCopy={copyContent} />}
     </>

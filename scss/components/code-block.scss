@@ -8,10 +8,21 @@
   display: flex;
   flex-grow: 1;
 
+  border: none;
+
   margin-bottom: 0.5rem;
 
   pre {
     margin: 0;
     overflow: visible;
   }
+}
+
+code {
+  color: $color-5;
+  background-color: rgba($color: $color-1, $alpha: 1);
+  border: solid 1px $color-2;
+  padding: 1px;
+  border-radius: 3px;
+  font-size: .85em;
 }

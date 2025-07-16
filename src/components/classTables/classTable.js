@@ -6,7 +6,7 @@ import CopyToClipboardButton from '../copyToClipboardButton';
 import { headersObject } from '@/utils/headers';
 import { ClassContext } from '@/context/classContext';
 
-function ClassTableCsv({ game, filePath }) {
+function ClassTableCsv({ game }) {
   const [useAltHeader, setUseAltHeader] = useState(false);
   const [contentArray, setContentArray] = useState()
 
@@ -16,8 +16,6 @@ function ClassTableCsv({ game, filePath }) {
   const altHeader = headersObject.unparsed[game];
 
   const headers = (useAltHeader && altHeader ? altHeader : ogHeader).split(',');
-
-  const tableName = game + " Table";
 
   useEffect(
     () => {
@@ -30,18 +28,14 @@ function ClassTableCsv({ game, filePath }) {
     <>
       {
         contentArray &&
-        <div className='component-container'>
+        <>
           <div className="mb-2">
-            <h5>{tableName}</h5>
-            <small className="text-muted wrap-container">
-              <em>{filePath}</em>
-            </small>
             <Form.Check
               type="switch"
               label="Use original column names"
               checked={useAltHeader}
               onChange={() => setUseAltHeader(!useAltHeader)}
-              className="mt-2 switch-headers"
+              className="switch-headers"
             />
           </div>
           <div className='scrollable-container'>
@@ -65,7 +59,7 @@ function ClassTableCsv({ game, filePath }) {
             </Table>
           </div>
           <CopyToClipboardButton textToCopy={contentArray[0].join(',')} />
-        </div>
+        </>
       }
     </>
   );

@@ -3,11 +3,12 @@
 import React, { useEffect } from 'react'
 
 import CsvInput from '@/components/csvInput'
-import ClassTableCsv from '@/components/tables/classTable'
+import ClassTableContainer from '@/components/classTables/classTableContainer'
 import NameDecriptionReference from '@/components/nameDescriptionReference'
 import MapSprites from '@/components/mapSprites/mapSprites'
 import PromotionContainer from '@/components/promotion/promotionContainer'
-import FE8PromoTable from '@/components/tables/fe8PromoTable'
+import FE8PromoTable from '@/components/classTables/fe8PromoTable'
+import BattleAnimsContainer from '@/components/battleAnims/battleAnimsContainer'
 
 import { ClassContext } from '@/context/classContext'
 import { useClassContext } from '@/hooks/useClassContext'
@@ -21,6 +22,14 @@ function Home() {
     "Veslyquix/SRR_FEGBA/blob/main/Patches/FE6/PromotionItemUseLists/Installer.event",
   ]
 
+  const filePathAnimations = {
+    animsFolder: "Veslyquix/SRR_FEGBA/gfx/Anims/png/",
+    arrayLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/.setID.py",
+    definitionsScriptLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/GenerateDefinitions.bat",
+    renamingScriptLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/RenameFolders.cmd",
+    pointersLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/Animations.event"
+  }
+
   return (
     <ClassContext.Provider value={{ classContextData, updateClassContext, classContextUpdateNumber }}>
       <div className='page-container'>
@@ -29,12 +38,11 @@ function Home() {
           classContextData &&
           <>
             <PromotionContainer filePath={filePathItems} />
-            <ClassTableCsv game={"FE6"} filePath={"veslyquix/SRR_FEGBA/Patches/FE6/Tables/ClassFE6Form_0060A0E8.csv"} />
-            <ClassTableCsv game={"FE7"} filePath={"veslyquix/SRR_FEGBA/Patches/FE7/Tables/ClassForm_00BE015C.csv"} />
-            <ClassTableCsv game={"FE8"} filePath={"Vesly01/SkillSystem/Tables/NightmareModules/CharactersClasses/ClassTable.csv"} />
+            <ClassTableContainer/>
             <FE8PromoTable filePath={"Vesly01/SkillSystem/blob/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/PromotionBranchEditor.csv"} />
             <NameDecriptionReference filePath={"veslyquix/SRR_FEGBA/Text/Names.txt"} />
             <MapSprites filePath={"veslyquix/SRR_FEGBA/gfx/MapSprites/Installer.event"} />
+            <BattleAnimsContainer filePath={filePathAnimations} />
           </>
         }
       </div>

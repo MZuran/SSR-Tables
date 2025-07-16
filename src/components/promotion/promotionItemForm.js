@@ -49,8 +49,9 @@ function PromotionItemForm({ setter }) {
             label={label}
             name={label}
             checked={selectedOptions[label]}
+            className='checkbox'
             onChange={handleCheckboxChange}
-            style={{ marginRight: "1rem", width: "10rem", marginBottom: "0.5rem" }}
+            /* style={{ marginRight: "1rem", width: "10rem", marginBottom: "0.5rem" }} */
         />
     ));
 
@@ -63,6 +64,7 @@ function PromotionItemForm({ setter }) {
             name={"MasterSeal"}
             checked={true}
             disabled
+            className='checkbox'
             onChange={handleCheckboxChange}
             style={{ marginRight: "1rem", width: "10rem", marginBottom: "0.5rem" }}
         />

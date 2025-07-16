@@ -1,4 +1,4 @@
-import hexToBinary from "../hexToBinary";
+import { hexToBinary } from "../hexAndBinaryFunctions";
 
 const skillSet1 = [
   "MountedAid",

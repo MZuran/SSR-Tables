@@ -18,6 +18,7 @@ function PromotionForm({ setUsablePromotionItemsParent, setCanPromoteParent }) {
         classContextData.classObject["Menu Class"] = relatedClass || "0x00";
         classContextData.tableData["Alt Class"] = altPromotion || "0x00";
 
+        //TableData updated
         classContextData.tableData.FE6 = exportObjectForFE6(classContextData.classObject)
         classContextData.tableData.FE7 = exportObjectForFE7(classContextData.classObject)
         classContextData.tableData.FE8 = exportObjectForFE8(classContextData.classObject)

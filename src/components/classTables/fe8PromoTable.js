@@ -37,38 +37,39 @@ function FE8PromoTable({ filePath }) {
 
   return (
     <>
-      <div className='component-container'>
-        <div className="mb-2">
-          <h5>{tableName}</h5>
-          <small className="text-muted wrap-container">
-            <em>{filePath}</em>
-          </small>
-          <Form.Check
-            type="switch"
-            label="Use alternate column names"
-            checked={useAltHeader}
-            onChange={() => setUseAltHeader(!useAltHeader)}
-            className="mt-2 switch-headers"
-          />
+        <div className='component-container'>
+          <div className="mb-2">
+            <h5>{tableName}</h5>
+            <small className="text-muted wrap-container">
+              <em>{filePath}</em>
+            </small>
+            <p className='mt-3'>If the class doesn't promote, ignore this table.</p>
+            <Form.Check
+              type="switch"
+              label="Use alternate column names"
+              checked={useAltHeader}
+              onChange={() => setUseAltHeader(!useAltHeader)}
+              className="mt-2 switch-headers"
+            />
+          </div>
+          <div className='scrollable-container'>
+            <Table striped bordered hover className='csv-table'>
+              <thead>
+                <tr>
+                  {headers.map((col, idx) => (
+                    <th key={idx}>{col}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {mappedContentArray}
+                </tr>
+              </tbody>
+            </Table>
+          </div>
+          <CopyToClipboardButton textToCopy={contentArray.flat().join(',')} />
         </div>
-        <div className='scrollable-container'>
-          <Table striped bordered hover className='csv-table'>
-            <thead>
-              <tr>
-                {headers.map((col, idx) => (
-                  <th key={idx}>{col}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {mappedContentArray}
-              </tr>
-            </tbody>
-          </Table>
-        </div>
-        <CopyToClipboardButton textToCopy={contentArray.flat().join(',')} />
-      </div>
     </>
   );
 }

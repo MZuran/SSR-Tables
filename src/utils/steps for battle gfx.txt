@@ -1,0 +1,28 @@
+Veslyquix/SRR_FEGBA/gfx/Anims/png/
+
+    Paste the animation folder for the class in this directory
+
+Veslyquix/SRR_FEGBA/gfx/Anims/.setID.py
+
+    Add the class' animation pointer to the primary_keywords array
+
+Veslyquix/SRR_FEGBA/gfx/Anims/GenerateDefinitions.bat
+
+    run this file
+
+Veslyquix/SRR_FEGBA/gfx/Anims/definitions.event
+
+    Define the different animations for a class' weapon type by adding an offset to StartingAnimID
+
+    #define LynLordSword (StartingAnimID+239)
+    #define LynLordUnarmed (StartingAnimID+240)
+
+Veslyquix/SRR_FEGBA/gfx/Anims/Animations.event
+
+    Set the correlation between the class' generic battle animation pointer and its specific battle animation pointers for different weapon types
+
+    LynLord_Anim:
+    animEntry(LynLordSword)
+    SwordAnim(LynLordSword)
+    UnarmedAnim(LynLordUnarmed)
+    weaponAnimEnd(2)
