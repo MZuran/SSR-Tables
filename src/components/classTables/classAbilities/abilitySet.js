@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 
 export default function AbilitySet({ abilities, abilitySet, game, setIndex, onCheckboxChange }) {
   return (
-    <div className="outline mb-0">
+    <div className="outline">
       <p className="checkbox" style={{ marginTop: 0 }}>
         Ability {setIndex + 1}
       </p>

@@ -11,7 +11,8 @@ function WeaponForm({ setParent, className, style }) {
         Magic: false,
         Monster: false,
         Staff: false,
-        Unarmed: true, // always true
+        Refresh: false,
+        Unarmed: true,
     });
 
     const handleChange = (event) => {
@@ -20,7 +21,6 @@ function WeaponForm({ setParent, className, style }) {
         setWeaponState((prevState) => ({
             ...prevState,
             [name]: checked,
-            Unarmed: true, // enforce unarmed as true on every change
         }));
     };
 
@@ -100,13 +100,22 @@ function WeaponForm({ setParent, className, style }) {
                     <Form.Check
                         type="checkbox"
                         className='checkbox'
+                        label="Refresh"
+                        name="Refresh"
+                        id="weapon-refresh"
+                        checked={weaponState.Refresh}
+                        onChange={handleChange}
+                    />
+                </div>
+                <Form.Check
+                        type="checkbox"
+                        className='checkbox'
                         label="Unarmed"
                         name="Unarmed"
                         id="weapon-unarmed"
-                        checked={true}
-                        disabled
+                        checked={weaponState.Unarmed}
+                        onChange={handleChange}
                     />
-                </div>
             </Form>
             <Button
                 className='button-style'

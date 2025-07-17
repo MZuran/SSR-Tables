@@ -64,7 +64,7 @@ function ClassAbilitiesForm({ game }) {
 
   return (
     <>
-      <Form className="d-flex flex-wrap">
+      <Form className="d-flex flex-wrap justify-content-center" style={{gap: "1rem"}}>
         {classAbilities[game].map((abilitySet, setIndex) => (
           <AbilitySet
             key={setIndex}
