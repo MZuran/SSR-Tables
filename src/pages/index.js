@@ -9,6 +9,7 @@ import MapSprites from '@/components/mapSprites/mapSprites'
 import PromotionContainer from '@/components/promotion/promotionContainer'
 import FE8PromoTable from '@/components/classTables/fe8PromoTable'
 import BattleAnimsContainer from '@/components/battleAnims/battleAnimsContainer'
+import MovementCostContainer from '@/components/movementCosts/movementCostContainer'
 
 import { ClassContext } from '@/context/classContext'
 import { useClassContext } from '@/hooks/useClassContext'
@@ -38,8 +39,9 @@ function Home() {
           classContextData &&
           <>
             <PromotionContainer filePath={filePathItems} />
+            <MovementCostContainer/>
             <ClassTableContainer/>
-            <FE8PromoTable filePath={"Vesly01/SkillSystem/blob/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/PromotionBranchEditor.csv"} />
+            <FE8PromoTable filePath={"Vesly01/SkillSystem/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/PromotionBranchEditor.csv"} />
             <NameDecriptionReference filePath={"veslyquix/SRR_FEGBA/Text/Names.txt"} />
             <MapSprites filePath={"veslyquix/SRR_FEGBA/gfx/MapSprites/Installer.event"} />
             <BattleAnimsContainer filePath={filePathAnimations} />

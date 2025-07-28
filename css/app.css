@@ -168,6 +168,35 @@ code {
   background-color: #38a3a5 !important;
 }
 
+.dropdown-menu {
+  width: 15rem;
+  border-radius: 0;
+}
+
+.dropdown-toggle {
+  margin-top: 1rem;
+  border-color: #38a3a5;
+  border-width: 0px;
+  background-color: #38a3a5;
+  width: 15rem;
+  border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-toggle:hover {
+  border-color: #38a3a5;
+  background-color: #22577a;
+}
+.dropdown-toggle:active {
+  border-color: #57cc99 !important;
+  background-color: #38a3a5 !important;
+}
+.dropdown-toggle.show {
+  border-color: #38a3a5 !important;
+  background-color: #22577a !important;
+}
+
 a {
   color: #38a3a5;
 }

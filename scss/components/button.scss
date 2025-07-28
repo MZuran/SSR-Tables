@@ -10,8 +10,46 @@
     background-color: $color-5;
   }
 
-  &:active{
-    border-color: $color-3!important;
-    background-color: $color-4!important;
+  &:active {
+    border-color: $color-3 !important;
+    background-color: $color-4 !important;
+  }
+}
+
+$dropdown-width: 15rem;
+
+.dropdown-menu {
+  width: $dropdown-width;
+  border-radius: 0;
+}
+
+.dropdown-toggle {
+  margin-top: 1rem;
+
+  border-color: $color-4;
+  border-width: 0px;
+  background-color: $color-4;
+
+  width: $dropdown-width;
+
+  border-radius: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    border-color: $color-4;
+    background-color: $color-5;
+  }
+
+  &:active {
+    border-color: $color-3 !important;
+    background-color: $color-4 !important;
+  }
+
+  &.show {
+    border-color: $color-4 !important;
+    background-color: $color-5 !important;
   }
 }
