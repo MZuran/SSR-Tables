@@ -17,7 +17,7 @@ const gameConfigs = [
   {
     game: 'FE8',
     label: 'FE8 Table',
-    filePath: 'veslyquix/SRR_FEGBA/Patches/FE8/Tables/ClassFE8Form_0060A0E8.csv',
+    filePath: 'Vesly01/SkillSystem/tree/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/ClassTable.csv',
   },
 ];
 
