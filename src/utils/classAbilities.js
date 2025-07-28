@@ -1,34 +1,34 @@
 const universalAbility1 = [
-    "Mounted Aid Calc",
-    "Canto",
-    "Steal",
-    "Thief Skill",
-    "Dance (Dancer)",
-    "Play (Bard)",
-    "Critical Boost",
-    "Ballista Access"
+  "Mounted Aid Calc",
+  "Canto",
+  "Steal",
+  "Thief Skill",
+  "Dance (Dancer)",
+  "Play (Bard)",
+  "Critical Boost",
+  "Ballista Access"
 ]
 
 const universalAbility2 = [
-    "Promoted Unit",
-    "Supply",
-    "Cavalry Unit Icon",
-    "Wyvern Unit Icon",
-    "Pegasus Unit Icon",
-    "Lord Unit",
-    "Female",
-    "Boss"
+  "Promoted Unit",
+  "Supply",
+  "Cavalry Unit Icon",
+  "Wyvern Unit Icon",
+  "Pegasus Unit Icon",
+  "Lord Unit",
+  "Female",
+  "Boss"
 ]
 
 const FE6Ability3 = [
-    "Roy Lock",
-    "Myrmidon/Swordmaster",
-    "Manakete Lock",
-    "Zephiel Lock",
-    "Disable Unit Select",
-    "Triangle Attack 1",
-    "Triangle Attack 2",
-    "NPC"
+  "Roy Lock",
+  "Myrmidon/Swordmaster",
+  "Manakete Lock",
+  "Zephiel Lock",
+  "Disable Unit Select",
+  "Triangle Attack 1",
+  "Triangle Attack 2",
+  "NPC"
 ]
 
 const FE7Ability3 = [
@@ -87,9 +87,10 @@ const FE8Ability4 = [
 ]
 
 const classAbilities = {
-    FE6: [universalAbility1, universalAbility2, FE6Ability3, FE6Ability4],
-    FE7: [universalAbility1, universalAbility2, FE7Ability3, FE7Ability4],
-    FE8: [universalAbility1, universalAbility2, FE8Ability3, FE8Ability4],
+  FE6: [universalAbility1, universalAbility2, FE6Ability3, FE6Ability4],
+  FE7: [universalAbility1, universalAbility2, FE7Ability3, FE7Ability4],
+  FE8: [universalAbility1, universalAbility2, FE8Ability3, FE8Ability4],
+  FE8R: [universalAbility1, universalAbility2, FE8Ability3, FE8Ability4],
 }
 
 export default classAbilities

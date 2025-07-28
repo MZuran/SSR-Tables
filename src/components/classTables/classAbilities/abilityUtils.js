@@ -7,6 +7,7 @@ const abilityIndex = {
   FE6: [34, 35, 36, 37],
   FE7: [38, 39, 40, 41],
   FE8: [38],
+  FE8R: [38, 39, 40, 41]
 };
 
 export function getAbilityIndices(game) {

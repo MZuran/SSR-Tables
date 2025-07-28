@@ -1,4 +1,4 @@
-import { FE6SRRHeader, FE7SRRHeader, FE8SRRHeader } from "../headers";
+import { FE6SRRHeader, FE7SRRHeader, FE8SRRHeader, FE8SRRHeaderAlt } from "../headers";
 
 // Default values for unknown fields per game
 const FE6Unknowns = {
@@ -63,4 +63,8 @@ export function exportObjectForFE7(classObject) {
 
 export function exportObjectForFE8(classObject) {
   return exportForHeader(FE8SRRHeader, classObject, FE8Unknowns, true);
+}
+
+export function exportObjectForFE8Randomizer(classObject) {
+  return exportForHeader(FE8SRRHeaderAlt, classObject, FE8Unknowns, false);
 }

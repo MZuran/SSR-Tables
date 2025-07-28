@@ -3,7 +3,7 @@ import { Form, Button, InputGroup } from 'react-bootstrap';
 
 import { getParsedCSVObject, bladeLordObject } from '@/utils/parse'
 
-import { exportObjectForFE6, exportObjectForFE7, exportObjectForFE8 } from '@/utils/table functions/exportClassTables';
+import { exportObjectForFE6, exportObjectForFE7, exportObjectForFE8, exportObjectForFE8Randomizer } from '@/utils/table functions/exportClassTables';
 
 const CsvInput = ({ onLoadData }) => {
     const [inputValue, setInputValue] = useState('');
@@ -21,7 +21,8 @@ const CsvInput = ({ onLoadData }) => {
                     tableData: {
                         FE6: exportObjectForFE6(classObject),
                         FE7: exportObjectForFE7(classObject),
-                        FE8: exportObjectForFE8(classObject)
+                        FE8: exportObjectForFE8(classObject),
+                        FE8R: exportObjectForFE8Randomizer(classObject)
                     }
                 }
             );
@@ -37,7 +38,8 @@ const CsvInput = ({ onLoadData }) => {
                     tableData: {
                         FE6: exportObjectForFE6(classObject),
                         FE7: exportObjectForFE7(classObject),
-                        FE8: exportObjectForFE8(classObject)
+                        FE8: exportObjectForFE8(classObject),
+                        FE8R: exportObjectForFE8Randomizer(classObject)
                     }
                 }
             );
