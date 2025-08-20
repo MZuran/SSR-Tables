@@ -15,7 +15,7 @@ const gameConfigs = [
     filePath: 'veslyquix/SRR_FEGBA/Patches/FE7/Tables/ClassFE7Form_0060A0E8.csv',
   },
   {
-    game: 'FE8',
+    game: 'FE8R',
     label: 'FE8 Table',
     filePath: 'Vesly01/SkillSystem/Tables/NightmareModules/CharactersClasses/CharacterTable.csv',
   },
