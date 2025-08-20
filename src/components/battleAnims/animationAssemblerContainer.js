@@ -4,7 +4,7 @@ function AnimationAssemblerContainer({ filePath }) {
   return (
     <>
       <hr />
-      <h5>Assembling the Animations</h5>
+      <h5>Assembling the animations</h5>
       <small className="text-muted wrap-container"><em>{filePath}</em></small>
       <p className='mt-4'>
         <code>_BatchAnimationAssembler.cmd</code> takes the <code>.bin</code> files in the png subfolders, turns them into <code>.event</code> files <br/>
