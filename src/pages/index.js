@@ -28,7 +28,8 @@ function Home() {
     arrayLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/.setID.py",
     definitionsScriptLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/GenerateDefinitions.bat",
     renamingScriptLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/RenameFolders.cmd",
-    pointersLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/Animations.event"
+    pointersLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/Animations.event",
+    animationAssembler: "Veslyquix/SRR_FEGBA/gfx/Anims/_BatchAnimationAssembler.cmd"
   }
 
   return (

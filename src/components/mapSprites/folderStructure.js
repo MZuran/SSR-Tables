@@ -16,16 +16,17 @@ function FolderStructure({ SMSName, MMSName }) {
     └── gfx/
         └── MapSprites/
             ├── MMS/
-            │   ├── ${MMSName}.png
+            │   ├── ${MMSName}.png  <- Moving Map Sprite
             │   └── ... 
             ├── SMS/
-            │   ├── ${SMSName}.png
+            │   ├── ${SMSName}.png  <- Standing Map Sprite
             │   └── ... 
             ├── dmp/
             │   └── ...
-            ├── Installer.event     <- Location of the lists to modify
-            ├── Png2DmpImages.bat   <- You need to run this file
-            ├── Readme.md           <- Important Information
+            ├── Installer.event                 <- Location of the lists to modify
+            ├── GenerateMapSpritesInstaller.bat <- Run this script once you've placed the .png pictures inside mms and sms
+            ├── Png2DmpImages.bat               <- Run this script after running the one above
+            ├── Readme.md                       <- Important Information
             └── ...`;
 
     const textAfter = `veslyquix/
@@ -48,6 +49,7 @@ function FolderStructure({ SMSName, MMSName }) {
             │   ├── ${MMSName}.dmp  <- Output
             │   └── ...
             ├── Installer.event
+            ├── GenerateMapSpritesInstaller.bat
             ├── Png2DmpImages.bat
             ├── Readme.md
             └── ...`;

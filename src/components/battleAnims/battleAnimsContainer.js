@@ -5,6 +5,7 @@ import RenamingScriptContainer from './renamingScriptContainer'
 import BattleAnimationFolder from './animationFolder'
 import DefinitionsScriptContainer from './definitionsScriptContainer'
 import AnimationsEventContainer from './animationsEventContainer'
+import AnimationAssemblerContainer from './animationAssemblerContainer'
 
 function BattleAnimsContainer({ filePath }) {
     return (
@@ -17,6 +18,7 @@ function BattleAnimsContainer({ filePath }) {
             <BattleAnimationFolder filePath={filePath.animsFolder} />
             <RenamingScriptContainer filePath={filePath.renamingScriptLocation} />
             <ClassPointerArrayFile filePath={filePath.arrayLocation} />
+            <AnimationAssemblerContainer filePath={filePath.animationAssembler}/>
             <DefinitionsScriptContainer filePath={filePath.definitionsScriptLocation}/>
             <AnimationsEventContainer filePath={filePath.pointersLocation}/>
         </div>

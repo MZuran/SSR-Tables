@@ -1,6 +1,5 @@
 import React from 'react'
 import MapSpriteForm from './mapSpriteForm'
-import FolderStructure from './folderStructure'
 
 import { Accordion } from 'react-bootstrap'
 
@@ -9,11 +8,12 @@ import { ClassContext } from '@/context/classContext'
 
 import CodeBlock from '../codeBlock'
 
+import MapSpriteAccordion from './mapSpriteAccordion'
+
 function MapSprites({ filePath }) {
 
     const [data, setData] = useState(null)
     const classTable = useContext(ClassContext).classContextData.classObject["Class Pointer"]
-    const smsPointer = useContext(ClassContext).classContextData.classObject["Standing Map Anims"]
     const repoLink = "https://github.com/Klokinator/FE-Repo"
 
     return (
@@ -21,94 +21,15 @@ function MapSprites({ filePath }) {
             <h5>Map Sprite References</h5>
             <small className="text-muted wrap-container"><em>{filePath}</em></small>
             <p className='mt-4'>
-                Map sprites for the {classTable} class can be downloaded from the <a target='_blank' href={repoLink}>Communal Fire Emblem Graphics Repository</a>
+                Map sprites for the {classTable} class can be downloaded from the <a target='_blank' href={repoLink}>Communal Fire Emblem Graphics Repository</a><br/>
+                Fill the form down below to see the expected folder structure before running the scripts.<br/>
+                <br/>
+                After confirming you have the expected folder structure, make sure to run <code>GenerateMapSpritesInstaller.bat</code> first and then run <code>Png2DmpImages.bat</code>. <br/>
+                <code>GenerateMapSpritesInstaller.bat</code> will automatically rename the files to remove special characters, no need for the user to rename them.
             </p>
             <hr/>
             <MapSpriteForm onUpdate={setData} />
-
-            {data &&
-                <>
-                    <hr />
-                    <FolderStructure SMSName={data.smsFileName} MMSName={data.mmsFileName} />
-                    <hr />
-                    <h5>List additions</h5>
-                    <Accordion /* defaultActiveKey="0" */>
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>SMS Id definition</Accordion.Header>
-                            <Accordion.Body>
-                                <small className="text-muted wrap-container">
-                                    <em>
-                                        First element of this list: <br /> #define Angel_F_Unknownstand 128
-                                    </em>
-                                </small>
-                                <CodeBlock> #define {data.smsFileName} {data.smsNumber} </CodeBlock>
-                            </Accordion.Body>
-                        </Accordion.Item>
-
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header>MMS Id definition</Accordion.Header>
-                            <Accordion.Body>
-                                <small className="text-muted wrap-container">
-                                    <em>
-                                        First element of this list: <br /> #define Arcanist_U_Unfinished_Norikinswalk 127
-                                    </em>
-                                </small>
-                                <CodeBlock> #define {data.mmsFileName} {data.mmsNumber} </CodeBlock>
-                            </Accordion.Body>
-                        </Accordion.Item>
-
-                        <Accordion.Item eventKey="2">
-                            <Accordion.Header>Class' Map Sprite definition</Accordion.Header>
-                            <Accordion.Body>
-                                <small className="text-muted wrap-container">
-                                    <em>
-                                        First element of this list: <br /> #define AlmT1 (AlmFighter_M_Norikinswalk+1)
-                                    </em>
-                                </small>
-                                <CodeBlock> #define {classTable} ({data.mmsFileName}+1) </CodeBlock>
-                            </Accordion.Body>
-                        </Accordion.Item>
-
-                        <Accordion.Item eventKey="3">
-                            <Accordion.Header>Class' Animation Pointer Definition</Accordion.Header>
-                            <Accordion.Body>
-                                <small className="text-muted wrap-container">
-                                    <em>
-                                        First element of this list: <br /> #define Alm_T1SMS AlmFighter_M_Norikinsstand
-                                    </em>
-                                </small>
-                                <CodeBlock> #define {smsPointer} {data.smsFileName} </CodeBlock>
-                            </Accordion.Body>
-                        </Accordion.Item>
-
-                        <Accordion.Item eventKey="4">
-                            <Accordion.Header>Set SMS function</Accordion.Header>
-                            <Accordion.Body>
-                                <small className="text-muted wrap-container">
-                                    <em>
-                                        First element of this list: <br /> SetSMS(AlmFighter_M_Norikinsstand, 1, AlmFighter_M_Norikinsstand_Data)
-                                    </em>
-                                </small>
-                                <CodeBlock> SetSMS({data.smsFileName}, {data.size}, {data.smsFileName}_Data) </CodeBlock>
-                            </Accordion.Body>
-                        </Accordion.Item>
-
-                        <Accordion.Item eventKey="5">
-                            <Accordion.Header>Set MMS function</Accordion.Header>
-                            <Accordion.Body>
-                                <small className="text-muted wrap-container">
-                                    <em>
-                                        First element of this list: <br /> SetMMS(AlmFighter_M_Norikinswalk, AlmFighter_M_Norikinswalk_Data, DemonKingAP)
-                                    </em>
-                                </small>
-                                <CodeBlock> SetMMS({data.mmsFileName}, {data.mmsFileName}_Data, DemonKingAP) </CodeBlock>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </>
-
-            }
-
+            <MapSpriteAccordion data={data}/>
         </div>
     )
 }

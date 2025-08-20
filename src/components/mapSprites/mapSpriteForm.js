@@ -4,6 +4,8 @@ import { Form, Button } from 'react-bootstrap';
 import { useContext } from 'react';
 import { ClassContext } from '@/context/classContext';
 
+import parseFileName from './parseNames';
+
 function MapSpriteForm({ onUpdate }) {
 
     const [values, setValues] = useState({
@@ -28,6 +30,9 @@ function MapSpriteForm({ onUpdate }) {
             alert("All fields must be filled out.");
             return;
         }
+
+        values.smsFileName = parseFileName(values.smsFileName)
+        values.mmsFileName = parseFileName(values.mmsFileName)
 
         values.mmsNumber = classId
 
