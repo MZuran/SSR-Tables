@@ -15,7 +15,7 @@ import ClassTypesContainer from '@/components/classType/classTypesContainer'
 import { ClassContext } from '@/context/classContext'
 import { useClassContext } from '@/hooks/useClassContext'
 
-import filePaths from './filePaths'
+import filePaths from '../utils/filePaths'
 
 function Home() {
   const { classContextData, updateClassContext, classContextUpdateNumber } = useClassContext();
