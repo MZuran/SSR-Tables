@@ -69,7 +69,7 @@ function ClassTypesForm({ setter }) {
 
     return (
         <>
-            <Form className='d-flex'>
+            <Form className='d-flex flex-wrap'>
                 {checkboxes}
             </Form>
             <Button className="button-style" onClick={updateClickHandler}>Update</Button>

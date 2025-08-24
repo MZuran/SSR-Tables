@@ -14,9 +14,9 @@ function UnpromotedFileList({ filePath }) {
             <h5>Setting Unpromoted State</h5>
             <small className="text-muted wrap-container"><em>{filePath[0]}<br />{filePath[1]}<br />{filePath[2]}</em></small>
             <CodeBlock className={"mt-3"} copyContent={`BYTE ${classPointer}`}>
-                // unpromoted classes<br/>
-                ...<br/>
-                BYTE {classPointer}
+                <i>// unpromoted classes<br/>
+                ...<br/></i>
+                <b>BYTE {classPointer}</b>
             </CodeBlock>
         </div>
     )
