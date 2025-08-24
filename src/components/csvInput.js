@@ -50,7 +50,7 @@ const CsvInput = ({ onLoadData }) => {
         <Form className='component-container'>
             <Form.Control
                 type="textarea"
-                placeholder="Enter CSV data"
+                placeholder="Enter CSV data exported from Fire Emblem 8"
                 autoComplete='off'
                 value={inputValue}
                 onChange={handleInputChange}

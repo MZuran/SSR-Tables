@@ -40,12 +40,13 @@ function PromotionItemFile({ promotionItemsObject, filePath }) {
                 <Accordion.Header>{item}</Accordion.Header>
                 <Accordion.Body>
                   {/* Placeholder content */}
+                  <p>Find the <code>{item}List</code> and add <code>BYTE: {classPointer}</code> under the added classes section.</p>
                   <CodeBlock copyContent={`BYTE: ${classPointer}`}>
-                    BYTE {item}List:<br />
+                    <i className=''>BYTE {item}List:<br />
                     ...<br />
                     #ifdef AddedClasses<br />
-                    ...<br />
-                    BYTE: {classPointer}
+                    ...<br /></i>
+                    <b>BYTE: {classPointer}</b>
                   </CodeBlock>
                 </Accordion.Body>
               </Accordion.Item>

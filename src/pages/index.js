@@ -10,27 +10,16 @@ import PromotionContainer from '@/components/promotion/promotionContainer'
 import FE8PromoTable from '@/components/classTables/fe8PromoTable'
 import BattleAnimsContainer from '@/components/battleAnims/battleAnimsContainer'
 import MovementCostContainer from '@/components/movementCosts/movementCostContainer'
+import ClassTypesContainer from '@/components/classType/classTypesContainer'
 
 import { ClassContext } from '@/context/classContext'
 import { useClassContext } from '@/hooks/useClassContext'
 
+import filePaths from './filePaths'
+
 function Home() {
   const { classContextData, updateClassContext, classContextUpdateNumber } = useClassContext();
 
-  const filePathItems = [
-    "Veslyquix/SRR_FEGBA/blob/main/Patches/FE8/PromotionItemUseLists/Installer.event",
-    "Veslyquix/SRR_FEGBA/blob/main/Patches/FE7/PromotionItemUseLists/Installer.event",
-    "Veslyquix/SRR_FEGBA/blob/main/Patches/FE6/PromotionItemUseLists/Installer.event",
-  ]
-
-  const filePathAnimations = {
-    animsFolder: "Veslyquix/SRR_FEGBA/gfx/Anims/png/",
-    arrayLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/.setID.py",
-    definitionsScriptLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/GenerateDefinitions.bat",
-    renamingScriptLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/RenameFolders.cmd",
-    pointersLocation: "Veslyquix/SRR_FEGBA/gfx/Anims/Animations.event",
-    animationAssembler: "Veslyquix/SRR_FEGBA/gfx/Anims/_BatchAnimationAssembler.cmd"
-  }
 
   return (
     <ClassContext.Provider value={{ classContextData, updateClassContext, classContextUpdateNumber }}>
@@ -39,13 +28,14 @@ function Home() {
         {
           classContextData &&
           <>
-            <PromotionContainer filePath={filePathItems} />
+            <PromotionContainer filePath={filePaths.promotionItems} />
             <MovementCostContainer/>
+            <ClassTypesContainer filePaths={filePaths.classTypes}/>
             <ClassTableContainer/>
-            <FE8PromoTable filePath={"Vesly01/SkillSystem/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/PromotionBranchEditor.csv"} />
-            <NameDecriptionReference filePath={"veslyquix/SRR_FEGBA/Text/Names.txt"} />
-            <MapSprites filePath={"veslyquix/SRR_FEGBA/gfx/MapSprites/Installer.event"} />
-            <BattleAnimsContainer filePath={filePathAnimations} />
+            <FE8PromoTable  filePath={filePaths.promotionTableFE8}/>
+            <NameDecriptionReference  filePath={filePaths.textNamesFile}/>
+            <MapSprites  filePath={filePaths.mapSprites}/>
+            <BattleAnimsContainer filePath={filePaths.battleAnimations} />
           </>
         }
       </div>
