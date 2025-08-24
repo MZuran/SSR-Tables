@@ -17,5 +17,5 @@ export function splitCommaString(input) {
  * @returns {string} Comma-separated string with trailing comma (e.g., "item1,item2,").
  */
 export function joinToCommaString(arr) {
-    return arr.join(",") + ",";
+    return arr.join(",");
 }
