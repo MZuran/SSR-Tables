@@ -18,7 +18,12 @@ const filePaths = {
     },
     promotionTableFE8: "Vesly01/SkillSystem/Randomizer_AddItems/Tables/NightmareModules/CharactersClasses/PromotionBranchEditor.csv",
     textNamesFile: "veslyquix/SRR_FEGBA/Text/Names.txt",
-    mapSprites: "veslyquix/SRR_FEGBA/gfx/MapSprites/Installer.event"
+    mapSprites: "veslyquix/SRR_FEGBA/gfx/MapSprites/Installer.event",
+    classTables: [
+        'veslyquix/SRR_FEGBA/Patches/FE6/Tables/ClassFE6Form_0060A0E8.csv',
+        'veslyquix/SRR_FEGBA/Patches/FE7/Tables/ClassFE7Form_0060A0E8.csv',
+        'Vesly01/SkillSystem/Tables/NightmareModules/CharactersClasses/ClassTable.csv'
+    ]
 }
 
 export default filePaths

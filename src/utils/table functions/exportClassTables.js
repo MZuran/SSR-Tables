@@ -2,18 +2,27 @@ import { FE6SRRHeader, FE7SRRHeader, FE8SRRHeader, FE8SRRHeaderAlt } from "../he
 
 // Default values for unknown fields per game
 const FE6Unknowns = {
-  "P56": "0x860C978",
-  "P60": "0x860C9AB",
-  "P64": "0x860C9DE",
-  "fe6 unknown": "0x00",
-  "??": "0x00"
+  "???": "0x00",
+  "??": "0x00",
+  "Def Bonus": "DefaultDef",
+  "Avo Bonus": "DefaultRes",
+  "Res Bonus": "DefaultAvoid",
+  "Default Portrait": "GenericClassCard"
 };
 
 const FE7Unknowns = {
-  "fe7 unknown": "0x00",
+  "???": "0x00",
+  "Def Bonus": "DefaultDef",
+  "Avo Bonus": "DefaultRes",
+  "Res Bonus": "DefaultAvoid",
+  "Default Portrait": "GenericClassCard"
 };
 
 const FE8Unknowns = {
+  "Def Bonus": "DefaultDef",
+  "Avo Bonus": "DefaultRes",
+  "Res Bonus": "DefaultAvoid",
+  "Default Portrait": "GenericClassCard"
 };
 
 /**
@@ -37,7 +46,7 @@ function exportForHeader(header, classObject, unknownDefaults = {}, isFE8 = fals
       return classObject.abilitiesString;
     }
 
-    if (key in classObject) {
+    if (key in classObject && !(key in unknownDefaults)) {
       return classObject[key];
     }
 

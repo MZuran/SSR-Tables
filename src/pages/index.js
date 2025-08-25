@@ -11,6 +11,7 @@ import FE8PromoTable from '@/components/classTables/fe8PromoTable'
 import BattleAnimsContainer from '@/components/battleAnims/battleAnimsContainer'
 import MovementCostContainer from '@/components/movementCosts/movementCostContainer'
 import ClassTypesContainer from '@/components/classType/classTypesContainer'
+import TerrainBonusesContainer from '@/components/terrainBonuses/terrainBonusesContainer'
 
 import { ClassContext } from '@/context/classContext'
 import { useClassContext } from '@/hooks/useClassContext'
@@ -30,8 +31,9 @@ function Home() {
           <>
             <PromotionContainer filePath={filePaths.promotionItems} />
             <MovementCostContainer/>
+            <TerrainBonusesContainer/>
             <ClassTypesContainer filePaths={filePaths.classTypes}/>
-            <ClassTableContainer/>
+            <ClassTableContainer filePaths={filePaths.classTables}/>
             <FE8PromoTable  filePath={filePaths.promotionTableFE8}/>
             <NameDecriptionReference  filePath={filePaths.textNamesFile}/>
             <MapSprites  filePath={filePaths.mapSprites}/>

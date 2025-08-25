@@ -3,25 +3,27 @@ import ClassTableCsv from './classTable';
 import ClassAbilitiesForm from './classAbilities/classAbilitiesForm';
 import { Collapse, Button } from 'react-bootstrap';
 
-const gameConfigs = [
-  {
-    game: 'FE6',
-    label: 'FE6 Table',
-    filePath: 'veslyquix/SRR_FEGBA/Patches/FE6/Tables/ClassFE6Form_0060A0E8.csv',
-  },
-  {
-    game: 'FE7',
-    label: 'FE7 Table',
-    filePath: 'veslyquix/SRR_FEGBA/Patches/FE7/Tables/ClassFE7Form_0060A0E8.csv',
-  },
-  {
-    game: 'FE8',
-    label: 'FE8 Table',
-    filePath: 'Vesly01/SkillSystem/Tables/NightmareModules/CharactersClasses/CharacterTable.csv',
-  },
-];
+function ClassTableContainer({ filePaths }) {
 
-function ClassTableContainer() {
+  const gameConfigs = [
+    {
+      game: 'FE6',
+      label: 'FE6 Table',
+      filePath: filePaths[0],
+    },
+    {
+      game: 'FE7',
+      label: 'FE7 Table',
+      filePath: filePaths[1],
+    },
+    {
+      game: 'FE8',
+      label: 'FE8 Table',
+      filePath: filePaths[2],
+    },
+  ];
+
+
   const [openForms, setOpenForms] = useState({
     FE6: false,
     FE7: false,
@@ -56,7 +58,7 @@ function ClassTableContainer() {
             </Button>
           </div>
 
-              <hr />
+          <hr />
           <Collapse in={openForms[game]}>
             <div id={`collapse-${game}`}>
               <ClassAbilitiesForm game={game} />

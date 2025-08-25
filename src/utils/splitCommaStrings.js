@@ -19,3 +19,23 @@ export function splitCommaString(input) {
 export function joinToCommaString(arr) {
     return arr.join(",");
 }
+
+/**
+ * Replaces a value at a specific index in a comma-separated string.
+ * 
+ * @param {string} input - Comma-separated string (e.g., "item1,item2,").
+ * @param {number} index - Index of the item to replace.
+ * @param {string} newValue - The new value to insert at the given index.
+ * @returns {string} Updated comma-separated string (e.g., "item1,newItem,").
+ */
+export function replaceValueAtIndex(input, index, newValue) {
+    const items = splitCommaString(input);
+
+    if (index < 0 || index >= items.length) {
+        throw new Error("Index out of bounds");
+    }
+
+    items[index] = newValue;
+
+    return joinToCommaString(items)
+}
