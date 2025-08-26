@@ -22,7 +22,6 @@ const CsvInput = ({ onLoadData }) => {
                         FE6: exportObjectForFE6(classObject),
                         FE7: exportObjectForFE7(classObject),
                         FE8: exportObjectForFE8(classObject),
-                        FE8R: exportObjectForFE8Randomizer(classObject)
                     }
                 }
             );
@@ -39,7 +38,6 @@ const CsvInput = ({ onLoadData }) => {
                         FE6: exportObjectForFE6(classObject),
                         FE7: exportObjectForFE7(classObject),
                         FE8: exportObjectForFE8(classObject),
-                        FE8R: exportObjectForFE8Randomizer(classObject)
                     }
                 }
             );

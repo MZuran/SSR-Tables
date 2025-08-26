@@ -90,7 +90,6 @@ const classAbilities = {
   FE6: [universalAbility1, universalAbility2, FE6Ability3, FE6Ability4],
   FE7: [universalAbility1, universalAbility2, FE7Ability3, FE7Ability4],
   FE8: [universalAbility1, universalAbility2, FE8Ability3, FE8Ability4],
-  FE8R: [universalAbility1, universalAbility2, FE8Ability3, FE8Ability4],
 }
 
 export default classAbilities

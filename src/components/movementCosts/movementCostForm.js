@@ -1,28 +1,27 @@
 import React, { useState, useContext } from 'react'
-import { universalMovementCosts } from '@/utils/movementCosts'
 import { Dropdown, Button, DropdownButton } from 'react-bootstrap'
 
 import { ClassContext } from '@/context/classContext'
-
 import { headersObject } from '@/utils/headers'
-import { splitCommaString, joinToCommaString } from '@/utils/splitCommaStrings'
+import { movementCostsReferences } from '@/utils/movementCosts'
+import { replaceValueAtIndex, getIndexOf } from '@/utils/splitCommaStrings'
 
-const movementCostIndex = {
+const indexes = {
     FE6: {
-        default: splitCommaString(headersObject.parsed.FE6).indexOf("Movement Cost"),
-        rain: splitCommaString(headersObject.parsed.FE6).indexOf("Movement Cost"),
-        snow: splitCommaString(headersObject.parsed.FE6).indexOf("Movement Cost"),
+        normal: getIndexOf(headersObject.parsed.FE6, "Movement Cost"),
+        rain: getIndexOf(headersObject.parsed.FE6, "Movement Cost"),
+        snow: getIndexOf(headersObject.parsed.FE6, "Movement Cost")
     },
     FE7: {
-        default: splitCommaString(headersObject.parsed.FE7).indexOf("Movement Cost"),
-        rain: splitCommaString(headersObject.parsed.FE7).indexOf("Movement Cost Rain"),
-        snow: splitCommaString(headersObject.parsed.FE7).indexOf("Movement Cost Snow"),
+        normal: getIndexOf(headersObject.parsed.FE7, "Movement Cost"),
+        rain: getIndexOf(headersObject.parsed.FE7, "Movement Cost Rain"),
+        snow: getIndexOf(headersObject.parsed.FE7, "Movement Cost Snow")
     },
     FE8: {
-        default: splitCommaString(headersObject.parsed.FE8).indexOf("Movement Cost"),
-        rain: splitCommaString(headersObject.parsed.FE8).indexOf("Movement Cost Rain"),
-        snow: splitCommaString(headersObject.parsed.FE8).indexOf("Movement Cost Snow"),
-    },
+        normal: getIndexOf(headersObject.parsed.FE8, "Movement Cost"),
+        rain: getIndexOf(headersObject.parsed.FE8, "Movement Cost Rain"),
+        snow: getIndexOf(headersObject.parsed.FE8, "Movement Cost Snow")
+    }
 }
 
 function MovementCostForm() {
@@ -30,24 +29,24 @@ function MovementCostForm() {
 
     const [movCost, setMovCost] = useState("DefaultMovCost")
 
-    const movementCostsTypes = Object.keys(universalMovementCosts)
+    const movementCostsTypes = Object.keys(movementCostsReferences)
 
     const handleSelect = (selectedKey) => {
         setMovCost(selectedKey)
     }
 
     const handleClickUpdate = () => {
-        const newContext = { ...classContextData }
         const gameList = ["FE6", "FE7", "FE8"]
+        const newContext = { ...classContextData }
 
-        gameList.forEach(game => {
-            const tableData = splitCommaString(newContext.tableData[game])
-
-            tableData[movementCostIndex[game].default] = universalMovementCosts[movCost][game].normal
-            tableData[movementCostIndex[game].rain] = universalMovementCosts[movCost][game].rain
-            tableData[movementCostIndex[game].snow] = universalMovementCosts[movCost][game].snow
-
-            newContext.tableData[game] = joinToCommaString(tableData)
+        gameList.forEach((game) => {
+            let tableString = newContext.tableData[game]
+            tableString = replaceValueAtIndex(tableString, indexes[game].normal, movementCostsReferences[movCost].normal)
+            newContext.tableData[game] = tableString
+            if (game == "FE6") { return }
+            tableString = replaceValueAtIndex(tableString, indexes[game].rain, movementCostsReferences[movCost].rain)
+            tableString = replaceValueAtIndex(tableString, indexes[game].snow, movementCostsReferences[movCost].snow)
+            newContext.tableData[game] = tableString
         })
 
         updateClassContext(newContext)

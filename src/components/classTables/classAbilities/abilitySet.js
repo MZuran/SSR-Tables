@@ -1,40 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 
-export default function AbilitySet({ abilities, abilitySet, game, setIndex, onCheckboxChange }) {
+import { useContext } from 'react';
+import { ClassContext } from '@/context/classContext';
+
+export default function AbilitySet({ setIndex, abilitySet, game, selectedAbilities, setSelectedAbilities }) {
+
+  function handleCheckboxChange(ability, event) {
+    const isChecked = event.target.checked
+
+    if (isChecked) {
+      setSelectedAbilities([...selectedAbilities, ability])
+    } else {
+      setSelectedAbilities(selectedAbilities.filter(a => a !== ability));
+    }
+   console.log(selectedAbilities)
+  }
+
   return (
     <div className="outline">
-      <p className="checkbox" style={{ marginTop: 0 }}>
-        Ability {setIndex + 1}
-      </p>
-      {abilitySet.map((ability, bitIndex) => {
-        const checkboxId = `ability-${game}-${setIndex}-${bitIndex}`;
+      <p className="checkbox" style={{ marginTop: 0 }}> Ability {setIndex + 1} </p>
 
-        // Determine if this box is checked
-        const isChecked =
-          game === 'FE8'
-            ? abilities[0]?.[setIndex * 8 + bitIndex] === 1
-            : abilities[setIndex]?.[7 - bitIndex] === 1;
-
-        // Determine how to handle change
-        const handleChange = () =>
-          game === 'FE8'
-            ? onCheckboxChange(setIndex, bitIndex)
-            : onCheckboxChange(setIndex, 7 - bitIndex);
-
-        return (
-          <Form.Check
-            key={checkboxId}
-            type="checkbox"
-            id={checkboxId}
-            label={ability}
-            checked={isChecked}
-            onChange={handleChange}
-            className="checkbox"
-            style={{ width: '14rem' }}
-          />
-        );
-      })}
-    </div>
+      {
+        abilitySet.map((ability, index) => {
+          return (
+            <Form.Check
+              disabled={ability == "??"}
+              type='checkbox'
+              label={ability}
+              name={`${ability}-${index}-${game}`}
+              className='checkbox'
+              key={`${ability}-${index}-${game}`}
+              id={`${ability}-${index}-${game}`}
+              style={{ width: "15rem" }}
+              onChange={(e) => handleCheckboxChange(ability, e)}
+              checked={selectedAbilities.includes(ability)}
+            />
+          )
+        })
+      }
+    </div >
   );
 }

@@ -33,17 +33,17 @@ const FE8Unknowns = {
  * @param {string} header - Comma-separated header columns.
  * @param {object} classObject - Object with keys from FEBuilderHeader plus abilitiesString.
  * @param {object} unknownDefaults - Object mapping unknown field names to default values.
- * @param {boolean} isFE8 - Whether to handle FE8 abilities special case.
+ * @param {boolean} singleAbilityColumn - Whether to handle FE8 abilities special case.
  * @returns {string} CSV row string with values in header order.
  */
-function exportForHeader(header, classObject, unknownDefaults = {}, isFE8 = false) {
+function exportForHeader(header, classObject, unknownDefaults = {}, singleAbilityColumn = false, game) {
   const columns = header.split(",");
 
   const values = columns.map((col) => {
     const key = col.trim();
 
-    if (isFE8 && key === "CharClassAbility") {
-      return classObject.abilitiesString;
+    if (singleAbilityColumn && key === "CharClassAbility") {
+      return classObject.abilitiesString[game];
     }
 
     if (key in classObject && !(key in unknownDefaults)) {
@@ -63,15 +63,15 @@ function exportForHeader(header, classObject, unknownDefaults = {}, isFE8 = fals
 }
 
 export function exportObjectForFE6(classObject) {
-  return exportForHeader(FE6SRRHeader, classObject, FE6Unknowns, false);
+  return exportForHeader(FE6SRRHeader, classObject, FE6Unknowns, true, "FE6");
 }
 
 export function exportObjectForFE7(classObject) {
-  return exportForHeader(FE7SRRHeader, classObject, FE7Unknowns, false);
+  return exportForHeader(FE7SRRHeader, classObject, FE7Unknowns, true, "FE7");
 }
 
 export function exportObjectForFE8(classObject) {
-  return exportForHeader(FE8SRRHeader, classObject, FE8Unknowns, true);
+  return exportForHeader(FE8SRRHeader, classObject, FE8Unknowns, true, "FE8");
 }
 
 export function exportObjectForFE8Randomizer(classObject) {

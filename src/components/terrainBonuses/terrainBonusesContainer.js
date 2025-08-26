@@ -3,7 +3,9 @@ import { useContext } from 'react'
 import { ClassContext } from '@/context/classContext'
 
 import { Button, Form } from 'react-bootstrap'
-import { replaceValueAtIndex, splitCommaString } from '@/utils/splitCommaStrings'
+import { replaceValueAtIndex, getIndexOf } from '@/utils/splitCommaStrings'
+
+import { FE6SRRHeader, FE7SRRHeader, FE8SRRHeader } from '@/utils/headers'
 
 function TerrainBonusesContainer() {
 
@@ -28,19 +30,19 @@ function TerrainBonusesContainer() {
     let newContext = {...classContextData}
 
     let FE6CSV = classContextData.tableData.FE6
-    FE6CSV = replaceValueAtIndex(FE6CSV, 48, `${bonusType}Def`)
-    FE6CSV = replaceValueAtIndex(FE6CSV, 49, `${bonusType}Avoid`)
-    FE6CSV = replaceValueAtIndex(FE6CSV, 50, `${bonusType}Res`)
+    FE6CSV = replaceValueAtIndex(FE6CSV, getIndexOf(FE6SRRHeader, "Def Bonus"), `${bonusType}Def`)
+    FE6CSV = replaceValueAtIndex(FE6CSV, getIndexOf(FE6SRRHeader, "Avo Bonus"), `${bonusType}Avoid`)
+    FE6CSV = replaceValueAtIndex(FE6CSV, getIndexOf(FE6SRRHeader, "Res Bonus"), `${bonusType}Res`)
     
     let FE7CSV = classContextData.tableData.FE7
-    FE7CSV = replaceValueAtIndex(FE7CSV, 54, `${bonusType}Def`)
-    FE7CSV = replaceValueAtIndex(FE7CSV, 55, `${bonusType}Avoid`)
-    FE7CSV = replaceValueAtIndex(FE7CSV, 56, `${bonusType}Res`)
+    FE7CSV = replaceValueAtIndex(FE7CSV, getIndexOf(FE7SRRHeader, "Def Bonus"), `${bonusType}Def`)
+    FE7CSV = replaceValueAtIndex(FE7CSV, getIndexOf(FE7SRRHeader, "Avo Bonus"), `${bonusType}Avoid`)
+    FE7CSV = replaceValueAtIndex(FE7CSV, getIndexOf(FE7SRRHeader, "Res Bonus"), `${bonusType}Res`)
 
     let FE8CSV = classContextData.tableData.FE8
-    FE8CSV = replaceValueAtIndex(FE8CSV, 52, `${bonusType}Def`)
-    FE8CSV = replaceValueAtIndex(FE8CSV, 51, `${bonusType}Avoid`)
-    FE8CSV = replaceValueAtIndex(FE8CSV, 53, `${bonusType}Res`)
+    FE8CSV = replaceValueAtIndex(FE8CSV, getIndexOf(FE8SRRHeader, "Def Bonus"), `${bonusType}Def`)
+    FE8CSV = replaceValueAtIndex(FE8CSV, getIndexOf(FE8SRRHeader, "Avo Bonus"), `${bonusType}Avoid`)
+    FE8CSV = replaceValueAtIndex(FE8CSV, getIndexOf(FE8SRRHeader, "Res Bonus"), `${bonusType}Res`)
 
     newContext.tableData.FE6 = FE6CSV
     newContext.tableData.FE7 = FE7CSV

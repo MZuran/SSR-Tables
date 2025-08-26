@@ -39,3 +39,17 @@ export function replaceValueAtIndex(input, index, newValue) {
 
     return joinToCommaString(items)
 }
+
+/**
+ * Gets the index of an element in a comma-separated string.
+ *
+ * @param {string} input - Comma-separated string (e.g., "item1,item2,item3,").
+ * @param {string} value - The value to search for in the array.
+ * @returns {number|null} The index of the value, or null if not found.
+ */
+export function getIndexOf(input, value) {
+    const items = splitCommaString(input);
+    const index = items.indexOf(value);
+    return index === -1 ? null : index;
+}
+

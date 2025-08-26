@@ -2,87 +2,56 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 import { ClassContext } from '@/context/classContext';
-import { binaryToHex } from '@/utils/hexAndBinaryFunctions';
-import { splitCommaString, joinToCommaString } from '@/utils/splitCommaStrings';
-import { getAbilityMacroName } from '@/utils/classAbilitiesMacro';
+import { getIndexOf, splitCommaString, replaceValueAtIndex } from '@/utils/splitCommaStrings';
+import { skills } from '@/utils/skills/skillList';
+import { FE6SRRHeader, FE7SRRHeader, FE8SRRHeader } from '@/utils/headers';
 
-import { returnAbilitiesArray, getAbilityIndices } from './abilityUtils';
-import classAbilities from '@/utils/classAbilities';
 import AbilitySet from './abilitySet';
 
-function ClassAbilitiesForm({ game }) {
-  const { classContextUpdateNumber, classContextData, updateClassContext } =
-    useContext(ClassContext);
+const headers = {
+  FE6: FE6SRRHeader,
+  FE7: FE7SRRHeader,
+  FE8: FE8SRRHeader
+}
 
-  const [abilities, setAbilities] = useState([]);
+function ClassAbilitiesForm({ game }) {
+  const { classContextUpdateNumber, classContextData, updateClassContext } = useContext(ClassContext);
+  const [selectedAbilities, setSelectedAbilities] = useState([])
 
   useEffect(() => {
-    const abilityArrays = returnAbilitiesArray(classContextData, game);
-    setAbilities(abilityArrays);
+    const index = getIndexOf(headers[game], "CharClassAbility")
+    const abilityArrays = splitCommaString(classContextData.tableData[game])[index];
+    setSelectedAbilities(abilityArrays.split("|"));
   }, [classContextUpdateNumber, game]);
 
-  const handleCheckboxChange = (setIndex, bitIndex) => {
-    if (game !== 'FE8') {
-      const newAbilities = [...abilities];
-      const updatedSet = [...newAbilities[setIndex]];
-      updatedSet[bitIndex] = updatedSet[bitIndex] === 0 ? 1 : 0;
-      newAbilities[setIndex] = updatedSet;
-      setAbilities(newAbilities);
-    } else {
-      // Flatten all checkboxes into one bit array (single column)
-      const totalCheckboxes = classAbilities[game].flat();
-      const flatIndex = setIndex * 8 + bitIndex;
+  function handleUpdate() {
+    const newAbilityString = selectedAbilities.join("|")
+    const newContext = {...classContextData}
+    let newTableArray = newContext.tableData[game]
+    const i = getIndexOf(headers[game], "CharClassAbility")
+    newTableArray = replaceValueAtIndex(newTableArray, i, newAbilityString)
 
-      const updated = [...abilities[0]];
-      updated[flatIndex] = updated[flatIndex] === 0 ? 1 : 0;
-      setAbilities([updated]);
-    }
-  };
-
-  const handleClickUpdate = () => {
-    const newContext = { ...classContextData };
-    const tableData = splitCommaString(newContext.tableData[game]);
-    const indices = getAbilityIndices(game);
-
-    if (game === 'FE8') {
-      const allLabels = classAbilities[game].flat();
-      const selectedMacros = allLabels
-        .filter((_, i) => abilities[0][i] === 1)
-        .map(label => getAbilityMacroName(label, game))
-        .filter(Boolean);
-
-      tableData[indices[0]] = selectedMacros.join('|');
-    } else {
-      indices.forEach((columnIndex, i) => {
-        tableData[columnIndex] = binaryToHex(abilities[i].join(''));
-      });
-    }
-
-    newContext.tableData[game] = joinToCommaString(tableData);
-    updateClassContext(newContext);
-  };
+    newContext.tableData[game] = newTableArray
+    updateClassContext(newContext)
+  }
 
   return (
     <>
-      <Form className="d-flex flex-wrap justify-content-center" style={{ gap: "1rem" }}>
-        {classAbilities[game].map((abilitySet, setIndex) => (
+      <div className=''>
+        <Form className="d-flex flex-wrap justify-content-center" style={{ gap: "1rem" }}>
+        {skills[game].map((abilitySet, setIndex) => (
           <AbilitySet
-            key={setIndex}
-            abilities={abilities}
+            key={`${setIndex}-ads`}
+            setIndex={setIndex}
             abilitySet={abilitySet}
             game={game}
-            setIndex={setIndex}
-            onCheckboxChange={handleCheckboxChange}
+            selectedAbilities={selectedAbilities}
+            setSelectedAbilities={setSelectedAbilities}
           />
         ))}
       </Form>
-      <Button
-        className="button-style"
-        style={{ marginLeft: '1rem' }}
-        onClick={handleClickUpdate}
-      >
-        Update
-      </Button>
+      <Button className='button-style' style={{marginLeft: "2rem"}} onClick={handleUpdate}>Update</Button>
+      </div>
     </>
   );
 }
