@@ -5,23 +5,23 @@ const FE6Unknowns = {
   "???": "0x00",
   "??": "0x00",
   "Def Bonus": "DefaultDef",
-  "Avo Bonus": "DefaultRes",
-  "Res Bonus": "DefaultAvoid",
+  "Avo Bonus": "DefaultAvoid",
+  "Res Bonus": "DefaultRes",
   "Default Portrait": "GenericClassCard"
 };
 
 const FE7Unknowns = {
   "???": "0x00",
   "Def Bonus": "DefaultDef",
-  "Avo Bonus": "DefaultRes",
-  "Res Bonus": "DefaultAvoid",
+  "Avo Bonus": "DefaultAvoid",
+  "Res Bonus": "DefaultRes",
   "Default Portrait": "GenericClassCard"
 };
 
 const FE8Unknowns = {
   "Def Bonus": "DefaultDef",
-  "Avo Bonus": "DefaultRes",
-  "Res Bonus": "DefaultAvoid",
+  "Avo Bonus": "DefaultAvoid",
+  "Res Bonus": "DefaultRes",
   "Default Portrait": "GenericClassCard"
 };
 
